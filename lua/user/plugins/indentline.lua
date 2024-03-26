@@ -3,6 +3,11 @@ if not ok then
     return
 end
 
+local ok, hooks = pcall(require, "ibl.hooks")
+if not ok then
+    return
+end
+
 local highlight = {
     "RainbowRed",
     "RainbowYellow",
@@ -12,11 +17,6 @@ local highlight = {
     "RainbowViolet",
     "RainbowCyan",
 }
-
-local ok, hooks = pcall(require, "ibl.hooks")
-if not ok then
-    return
-end
 
 hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
     vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
@@ -54,6 +54,7 @@ indent_blankline.setup({
         remove_blankline_trail = false,
     },
 })
+
 
 
 -- 以下是一些可选的配置示例：
